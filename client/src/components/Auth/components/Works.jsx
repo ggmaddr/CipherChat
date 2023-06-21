@@ -26,7 +26,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     width: 100%;
     flex-direction: column;
   }
@@ -36,8 +36,9 @@ const Title = styled.h1`
   color: #EDE6CC;
   position: absolute;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     text-align: center;
+    top:-50px;
   }
 `;
 const Left = styled.div`
@@ -46,7 +47,7 @@ const Left = styled.div`
   align-items: center;
   top: 50px;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     padding: 20px;
     justify-content: center;
   }
@@ -67,7 +68,7 @@ const ListItem = styled.li`
   -webkit-text-stroke: 1px white;
   position: relative;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     font-size: 60px;
   }
 

@@ -10,7 +10,7 @@ const Imging = () => {
           <Stage size="10" environment="apartment" intensity={0} >
             <Img />
           </Stage>
-          <OrbitControls enableZoom={true} autoRotate maxDistance={1} />
+          <OrbitControls enableZoom={false} autoRotate maxDistance={1} />
         </Suspense>
       </Canvas>
       

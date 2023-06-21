@@ -12,7 +12,7 @@ const GPT = () => {
           <Stage environment="city" intensity={0.6}>
             <Mac />
           </Stage>
-          <OrbitControls enableZoom={true} autoRotate maxDistance={10} minDistance={1}/>
+          <OrbitControls enableZoom={false} autoRotate maxDistance={10} minDistance={1}/>
         </Suspense>
       </Canvas>
       

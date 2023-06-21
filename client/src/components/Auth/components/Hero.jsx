@@ -15,7 +15,7 @@ const Section = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 0px;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     height: 200vh;
   }
 `;
@@ -29,7 +29,7 @@ const Container = styled.div`
   @media only screen and (max-width: 1450px) {
     width: min-content;
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     width: 100%;
     flex-direction: column;
     align-items: center;
@@ -44,17 +44,17 @@ const Left = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 20px;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     flex: 1;
     align-items: center;
   }
 `;
 
-export const Title = styled.h1`
+const Title = styled.h1`
   font-size: 74px;
   color: #EDE6CC;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     text-align: center;
   }
 `;
@@ -76,7 +76,7 @@ const Subtitle = styled.h2`
 const Desc = styled.p`
   font-size: 24px;
   color: #ffe7eb;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     padding: 20px;
     text-align: center;
   }
@@ -138,7 +138,7 @@ const Right = styled(motion.div)`
   flex: 3;
   position: relative;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     flex: 1;
     width: 100%;
   }
@@ -155,13 +155,13 @@ const Img = styled.img`
   margin: auto;
   animation: animate 2s infinite ease alternate;
   
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     width: 400px;
   }
 
   @keyframes animate {
     to {
-      transform: translateY(20px);
+      transform: translateY(40px);
     }
   }
 `;
@@ -170,7 +170,7 @@ const ggStyle = {
   left:'18px', 
   position:'absolute'
 };
-export const Hero = () => {
+const Hero = () => {
   return (
     <Section>
       <Navbar />
@@ -214,3 +214,4 @@ export const Hero = () => {
   );
 };
 
+export default Hero;

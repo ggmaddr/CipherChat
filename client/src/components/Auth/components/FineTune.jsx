@@ -12,7 +12,7 @@ const FineTune = () => {
           <Stage environment="city" intensity={0.6}>
             <Cyber />
           </Stage>
-          <OrbitControls enableZoom={true} autoRotate maxDistance={3} />
+          <OrbitControls enableZoom={false} autoRotate maxDistance={3} />
         </Suspense>
       </Canvas>
 

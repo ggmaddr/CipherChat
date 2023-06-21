@@ -10,12 +10,16 @@ import styles from '../styles/Home.module.css'
 import sass from '../styles/style.module.scss'
 
 const Home: NextPage = () => {
-  const {data} = useSession();
-  console.log(data)
+  const {data:session} = useSession();
+  console.log("SESSION: ",session)
+  const reloadSession = () => {
+    // const event = new Event("visibilitychange");
+    // document.dispatchEvent(event);
+  };
   return (
     <div>
-      {data?.user ?(<Chat/>
-      ):( <Auth />)}
+      {session?.user ?(<Chat/>
+      ):( <Auth session={session} reloadSession={reloadSession} />)}
     </div>
   )
 }
