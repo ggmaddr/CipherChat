@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { signOut } from "next-auth/react";
 
 export const LoginBox = styled.div`
   position: absolute;

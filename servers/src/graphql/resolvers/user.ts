@@ -6,7 +6,7 @@ const resolvers = {
     },
     Mutation: {
         createUsername:()=>{
-
+            console.log("I'M THE USER MUTATION RESOLVERS  ")
         }
 
     }

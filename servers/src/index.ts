@@ -9,10 +9,13 @@ import cors from 'cors';
 import { json } from 'body-parser';
 import typeDefs from './graphql/typeDefs';
 import resolvers from './graphql/resolvers';
+import * as dotenv from "dotenv"
 interface MyContext {
   token?: String;
 }
+
 async function main (){
+    dotenv.config();
     const app = express();
     const httpServer = http.createServer(app);
 
@@ -21,15 +24,24 @@ async function main (){
         resolvers
     })
 
-    const server = new ApolloServer<MyContext>({
+    const corsOptions = {
+        origin: process.env.CLIENT_ORIGIN,
+        credentials: true,
+    }
+    console.log("client",process.env.CLIENT_ORIGIN)
+    const server = new ApolloServer({
         schema,
-        plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-    });
+        csrfPrevention: true,
+        plugins: [
+          // Proper shutdown for the HTTP server.
+          ApolloServerPluginDrainHttpServer({ httpServer }),
+        ],
+      });
     await server.start();
     
     app.use(
     '/graphql',
-    cors(),
+    cors<cors.CorsRequest>(corsOptions),
     json(),
     expressMiddleware(server, {
         context: async ({ req }) => ({ token: req.headers.token }),
@@ -37,6 +49,6 @@ async function main (){
     );
 
     await new Promise<void>((resolve) => httpServer.listen({ port: 4000 }, resolve));
-    console.log(`🚀 Server ready at http://localhost:4000/graphql`);
+    console.log(`🚀 Server ready at `);
 }
 main().catch((err)=>console.log("GRAPHQL", err))

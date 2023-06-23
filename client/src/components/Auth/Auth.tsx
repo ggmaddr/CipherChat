@@ -3,9 +3,11 @@ import { signIn, signOut} from "next-auth/react";
 import { Session, } from "next-auth";
 import Hero from "./components/Hero.jsx";
 import Works from "./components/Works.jsx";
-import "./Styles"
-import { Container, Foot, Heading, Input, LoginBox, SubmitBut, UserBox } from "./Styles";
+import { Container, Foot, Heading, Input, LoginBox, SubmitBut, UserBox } from "./components/Styles";
 import { useState } from "react";
+import { useMutation } from "@apollo/client";
+import UserOperations from "../../graphql/operations/user"
+import { CreateUsernameData, CreateUsernameVariables } from "../../../util/types.js";
 interface IAuthProps {
   session: Session | null
   reloadSession: () =>void
@@ -13,9 +15,21 @@ interface IAuthProps {
 
 const Auth: React.FunctionComponent<IAuthProps> = (session, reloadSession) => {
     const [username, setUsername] = useState("");
+    
+    //name of function from servers
+    const [createUsername, {data, loading, error}] = useMutation< //Inside <>: 1st is return types, 2nd is passing types
+        CreateUsernameData, 
+        CreateUsernameVariables>
+        (UserOperations.Mutations.createUsername) 
+
+    console.log("createUsername DATA", data, loading, error)
+
     const onSubmit = async () => {
+        if (!username) return
         try{
-            // create username mutation to send our username to the graphql api
+            // create username mutation to send our username to the GraphQL 
+            //createUsrname is async because it communicates with API
+            await createUsername({variables: {username}})
         } catch (error){
             console.log('onSubmit error', error)
         }
@@ -32,7 +46,7 @@ const Auth: React.FunctionComponent<IAuthProps> = (session, reloadSession) => {
                     value={username} 
                     onChange={(event) => setUsername(event.target.value)}/>
                 </UserBox>
-                <SubmitBut >Submit</SubmitBut>
+                <SubmitBut onClick={onSubmit}>Submit</SubmitBut>
             </LoginBox>
         ) : 
         (
