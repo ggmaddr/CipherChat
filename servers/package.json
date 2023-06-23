@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -12,10 +12,18 @@
   "type": "module",
   "dependencies": {
     "@apollo/server": "^4.7.4",
+    "@graphql-tools/schema": "^10.0.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "expresss": "^0.0.0",
     "graphql": "^16.6.0",
-    "http": "^0.0.1-security"
+    "graphql-tag": "^2.12.6",
+    "http": "^0.0.1-security",
+    "lodash.merge": "^4.6.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/lodash.merge": "^4.6.7",
+    "@types/ws": "^8.5.5"
   }
 }
